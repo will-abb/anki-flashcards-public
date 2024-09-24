@@ -1,0 +1,10 @@
+":": |
+  definition: Separates keys from values in a map.
+  Example:
+  key: value
+
+"-": "definition: Denotes elements in a sequence (list).
+Example:
+- item1
+- item2
+"

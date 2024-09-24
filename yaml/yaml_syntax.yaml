@@ -1,0 +1,190 @@
+":": |
+  definition: Separates keys from values in a map.
+  Example:
+    key: value
+"-": |
+  definition: Denotes elements in a sequence (list).
+  Example:
+    - item1
+    - item2
+"{}": |
+  definition: Encloses inline mappings (dictionaries).
+  Example:
+    {key1: value1, key2: value2}
+"[]": |
+  definition: Encloses inline sequences (lists).
+  Example:
+    [item1, item2]
+"|": |
+  definition: Indicates a block of text where newlines are preserved.
+  Example:
+    text_block: |
+      This is a block of text.
+      New lines will be preserved.
+">": |
+  definition: Indicates a block of text where newlines become spaces.
+  Example:
+    text_block: >
+      This is a block of text
+      where new lines will be folded
+      into spaces.
+"\"": |
+  definition: Encloses strings, allowing for escape sequences and special characters.
+  Example:
+    quoted_text: "Line break: \n"
+"'": |
+  definition: Encloses strings where special characters are not interpreted, except for single quotes themselves.
+  Example:
+    literal_text: 'In YAML, ''single quotes'' protect special characters like \n.'
+"#": |
+  definition: Starts a comment line.
+  Example:
+    # This is a comment
+"&": |
+  definition: Defines an anchor for later reference.
+  Example:
+    base: &base
+      name: Base config
+"*": |
+  definition: References an earlier defined anchor.
+  Example:
+    derived:
+      <<: *base
+      name: Derived config
+"<<": |
+  definition: Merges the contents of one dictionary into another.
+  Example:
+    default: &default
+      path: /usr/bin
+      system: Linux
+    specific:
+      <<: *default
+      system: Ubuntu
+"!!": |
+  definition: Explicitly declares the type of a value.
+  Example:
+    int_value: !!int 123
+    float_value: !!float 123.45
+    str_value: !!str 123
+"custom_tag": |
+  definition: Allows for the application of custom data types or for language-specific objects in documents processed by applications.
+  Example:
+    custom_tag: !myTag {name: Custom, value: Tagged}
+"*": |
+  definition: Used for referencing an anchor previously defined with an ampersand (&). It's not meant to be used on its own without first establishing what it's referencing. Its primary role is to avoid repetition and maintain consistency across documents.
+  Example:
+    anchor_item: &myAnchor Value
+    reference: *myAnchor
+"Quoted Keys": |
+  definition: Keys can be quoted, which is useful for including special characters or leading with characters that might otherwise be interpreted as YAML syntax.
+  Example:
+    "http://example.com": "URL Key"
+    "123": "Quoted Numeric Key"
+"~": |
+  definition: The tilde (~) or the word null (case-insensitive) can be used to denote a null value.
+  Example:
+    nullable: ~
+"{} and []": |
+  definition: Square brackets ([]) represent lists, and curly braces ({}) represent maps in a compact, inline form. This is known as the "flow" style.
+  Example:
+    fruits: [Apple, Banana, Cherry]
+    person: {name: John Doe, age: 30}
+"override": |
+  definition: Shows how to use anchors and aliases to override specific values in a map when merging.
+  Example:
+    defaults: &defaults
+      check: true
+      path: /usr/bin
+    specific_task:
+      <<: *defaults
+      path: /usr/local/bin
+      name: Task Name
+"0o755 and 0xFFA07A": |
+  definition: YAML supports representing octal numbers with a 0o prefix and hexadecimal numbers with a 0x prefix.
+  Example:
+    octal: 0o755
+    hex: 0xFFA07A
+"!!int and !!str": |
+  definition: With the double exclamation mark (!!),
+  you can explicitly specify a data type for a value.
+  Example:
+    explicit_int: !!int "123"
+    explicit_str: !!str 123
+"true and false": |
+  definition: YAML has several reserved words interpreted as boolean or null unless quoted.
+  Example:
+    boolean_true: true
+    string_true: "true"
+    null_value: null
+    string_null: "null"
+"!myTag": |
+  definition: Tags (!tag) can define custom data types or be used for language-specific objects in documents processed by applications.
+  Example:
+    custom_tag: !myTag {key: value}
+"? | and :": |
+  definition: YAML allows for complex keys, using ? to introduce a key and : to separate it from the value, enabling keys to be more than just simple strings.
+  Example:
+    ? |
+      This is a
+      multi-line string
+      as a key
+    : "And this is its value"
+"!!set": |
+  definition: YAML has a way to represent sets, which are collections of unique elements, using mappings where only the keys matter.
+  Example:
+    --- !!set
+    ? item1: null
+    ? item2: null
+    ? item3: null
+"%YAML and %TAG": |
+  definition: Directives are instructions to the YAML processor, like %YAML for specifying the version, and %TAG for defining shorthand references for URI tags.
+  Example:
+    %YAML 1.2
+    %TAG ! tag:example.com,2000:app/
+    ---
+    !shape
+      type: circle
+      radius: 15
+"!!binary": |
+  definition: YAML supports binary data, encoded using Base64 and represented with the tag !!binary.
+  Example:
+    picture: !!binary |
+        R0lGODdhDAAMAIQAAP//9/X
+        17unp5WZmZgAAAOfn515eXv
+        Pz7Y6OjuDg4J+fn5OTk6enp
+        56enmleECcgggoBADs=
+"&list_anchor": |
+  definition: Anchors and aliases can also be applied to sequences (lists), allowing for the repetition of entire lists or parts of lists without duplicating the content.
+  Example:
+    base_list: &list_anchor
+      - item1
+      - item2
+
+    repeated_list: *list_anchor
+"folded_block_scalars -> ": |
+  definition: In YAML, a folded block scalar is created by a dash followed by a greater-than sign '->'. It converts newlines to spaces, except for blank lines or more indented lines which are preserved.
+  Example: >
+    folded text 
+    line 1
+    line 2
+
+      line 3 with indentation
+    line 4
+
+"literal_block_scalar": |
+  definition: A literal block scalar is created by a pipe followed by a dash '|-'. It preserves newlines and any trailing spaces. The dash indicates that the final newline is to be excluded from the value.
+  Example: |-
+    literal text
+    line 1
+    line 2
+
+    line 3 with a space->    
+    line 4
+
+"merge_key_language_independent_type": |
+  definition: In YAML, '<<: *anchor' is a merge key, which is a language-independent type for merging maps. It merges the keys and values of one or more specified maps into the current map.
+  Example:
+    - step:
+        name: Deploy Service to Production
+        deployment: production
+        <<: *commonBuildAndDeploy

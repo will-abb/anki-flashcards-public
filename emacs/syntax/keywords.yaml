@@ -1,0 +1,201 @@
+"special form" : |
+  definition: In Lisp, special forms are syntactic constructs that have special rules for their evaluation. They are fundamental for defining control flow and variable bindings, differing from functions which all have a standard evaluation pattern.
+  Example:
+    (if (> x 0) 'positive 'non-positive)
+"assoc" : |
+  definition: In Lisp, 'assoc' is a function used to retrieve a pair from an association list (alist) based on the key.
+  Example:
+    (assoc 'key '((key . value) (another-key . another-value)))
+"alist" : |
+  definition: In Lisp, an alist, or association list, is a list of pairs (cons cells) where the car of each pair is a key and the cdr is the corresponding value.
+  Example:
+    ((key1 . value1) (key2 . value2))
+"cdr" : |
+  definition: In Lisp, 'cdr' (pronounced 'could-er') is a function that returns the rest of the list (the tail) after the first element.
+  Example:
+    (cdr '(a b c)) ; returns (b c)
+"cons" : |
+  definition: In Lisp, 'cons' is a fundamental function used to construct memory objects which hold two values or pointers to values.
+  Example:
+    (cons 'a 'b) ; returns (a . b)
+"ELISP" : |
+  definition: ELISP, or Emacs Lisp, is a dialect of the Lisp programming language used as a scripting language by Emacs (a text editor).
+  Example:
+    (setq my-variable 'some-value) ; sets 'my-variable' to 'some-value'
+"EMACS" : |
+  definition: EMACS is a family of text editors that are characterized by their extensibility. 
+  Example:
+    M-x replace-string ; invokes the command to replace a string in Emacs
+"LISP" : |
+  definition: LISP is a programming language with a long history and distinctive, fully parenthesized prefix notation.
+  Example:
+    (setq x (+ 5 3)) ; sets x to the sum of 5 and 3
+"syntax" : |
+  definition: Syntax refers to the rules that define the combinations of symbols that are considered correctly structured programs in a language.
+  Example:
+    (if x (print x)) ; if x is true, prints x
+"buffer" : |
+  definition: In Emacs, a buffer is a region of text that has been read into Emacs's memory, which may be displayed in a window and edited.
+  Example:
+    (switch-to-buffer "new-buffer") ; switches to a buffer named "new-buffer"
+"lambda" : |
+  definition: In Lisp, a lambda expression is used to create anonymous functions.
+  Example:
+    (lambda (x) (* x x)) ; defines a function that squares x
+"macro" : |
+  definition: In Lisp, a macro refers to a construct that allows extending the language by transforming input expressions.
+  Example:
+    (defmacro when (cond &rest body) `(if ,cond (progn ,@body)))
+"hook" : |
+  definition: In Emacs, a hook is a list of functions that are executed when a specific event occurs.
+  Example:
+    (add-hook 'after-init-hook #'my-init-function) ; adds 'my-init-function' to 'after-init-hook'
+
+"minor mode" : |
+  definition: In Emacs, a minor mode is a feature that can be enabled or disabled independently of other features.
+  Example:
+    (global-linum-mode 1) ; enables line numbering globally
+"major mode" : |
+  definition: In Emacs, a major mode is a set of behaviors that provide editor features for specific types of files, like programming languages.
+  Example:
+    (setq major-mode 'python-mode) ; sets the current buffer's major mode to python-mode
+"scratch buffer" : |
+  definition: In Emacs, the scratch buffer is used for notes and Lisp practice and is not associated with any file.
+  Example:
+    ; Opening Emacs loads the *scratch* buffer by default
+"eval" : |
+  definition: In Lisp, 'eval' is a function that evaluates Lisp expressions.
+  Example:
+    (eval '(+ 2 3)) ; evaluates and returns 5
+"setq" : |
+  definition: In Emacs Lisp, 'setq' is used to set the value of a variable.
+  Example:
+    (setq my-var 10) ; sets the variable 'my-var' to 10
+"kill-ring" : |
+  definition: In Emacs, the kill ring is a list where cut or copied text is stored, allowing for pasting (yanking).
+  Example:
+    (kill-new "Hello, world!") ; adds "Hello, world!" to the kill ring
+"yank" : |
+  definition: In Emacs, 'yank' is used to paste text from the kill ring.
+  Example:
+    (yank) ; pastes the most recently killed text
+"point" : |
+  definition: In Emacs, the point is the current position of the cursor in the buffer.
+  Example:
+    (point) ; returns the current position of the cursor
+"mark" : |
+  definition: In Emacs, the mark is used to specify the other end of a text selection region, with the point being one end.
+  Example:
+    (set-mark-command nil) ; sets the mark at current position
+"s-expression" : |
+  definition: In Lisp, an s-expression (symbolic expression) is a way to represent nested list data.
+  Example:
+    '(this is an (s-expression example)) ; an example of an s-expression
+"defun" : |
+  definition: In Lisp, 'defun' is used to define a new function.
+  Example:
+    (defun square (x) (* x x)) ; defines a function 'square' that squares its argument
+"quote" : |
+  definition: In Lisp, 'quote' prevents evaluation, returning the argument as a literal rather than executing it.
+  Example:
+    (quote (1 2 3)) ; returns the list (1 2 3) without evaluating it
+"progn" : |
+  definition: In Lisp, 'progn' evaluates multiple expressions in sequence and returns the value of the last expression.
+  Example:
+    (progn (print "First") (print "Second") (+ 5 3)) ; prints "First", then "Second", and returns 8
+"let" : |
+  definition: In Lisp, 'let' binds variables to values for a limited scope and evaluates a body of expressions.
+  Example:
+    (let ((x 5) (y 3)) (+ x y)) ; binds x to 5 and y to 3, then evaluates (+ x y) returning 8
+"cond" : |
+  definition: In Lisp, 'cond' is a conditional expression similar to 'if', but handles multiple conditions.
+  Example:
+    (cond ((> x 0) 'positive) ((
+"if" : |
+  definition: In Lisp, 'if' evaluates a condition and executes one of two branches based on the condition's boolean value.
+  Example:
+    (if (> x 0) 'positive 'negative) ; checks if x is greater than 0, returns 'positive' if true, otherwise 'negative'
+"lambda" : |
+  definition: In Lisp, 'lambda' creates an anonymous function with specified parameters and a body.
+  Example:
+    (lambda (x y) (+ x y)) ; creates a function that adds two arguments
+"setf" : |
+  definition: In Lisp, 'setf' is a macro used to assign values to variables.
+  Example:
+    (setf x 10) ; sets the value of x to 10
+"loop" : |
+  definition: In Lisp, 'loop' provides a rich syntax for iterating over sequences, accumulating results, and executing repetitive tasks.
+  Example:
+    (loop for x from 1 to 10 collect x) ; creates a list of numbers from 1 to 10
+"dolist" : |
+  definition: In Lisp, 'dolist' iterates over each element of a list, executing a block of code.
+  Example:
+    (dolist (x '(1 2 3)) (print x)) ; prints each element of the list
+"dotimes" : |
+  definition: In Lisp, 'dotimes' iterates a specified number of times, executing a block of code.
+  Example:
+    (dotimes (i 5) (print i)) ; prints numbers from 0 to 4
+"case" : |
+  definition: In Lisp, 'case' is a conditional expression that chooses from several alternatives based on the value of a variable.
+  Example:
+    (case x ('a 'apple) ('b 'banana)) ; returns 'apple' if x is 'a', 'banana' if x is 'b'
+"destructuring-bind" : |
+  definition: In Lisp, 'destructuring-bind' binds variables to the corresponding values in a structured list.
+  Example:
+    (destructuring-bind (a (b c)) '(1 (2 3)) (list a b c)) ; returns (1 2 3)
+"multiple-value-bind" : |
+  definition: In Lisp, 'multiple-value-bind' binds variables to multiple values returned by an expression.
+  Example:
+    (multiple-value-bind (val count) (values 1 2) (list val count)) ; returns (1 2)
+"block" : |
+  definition: In Lisp, 'block' creates a block of code that can be exited with 'return-from'.
+  Example:
+    (block myblock (if (> x 0) (return-from myblock 'positive) 'negative)) ; returns 'positive' if x > 0
+"return-from" : |
+  definition: In Lisp, 'return-from' exits a named block, returning a specified value.
+  Example:
+    (block myblock (return-from myblock 'done)) ; returns 'done' from myblock
+"catch" : |
+  definition: In Lisp, 'catch' establishes a catch point for the 'throw' tag; can catch thrown values.
+  Example:
+    (catch 'tag (throw 'tag 'caught)) ; returns 'caught'
+"throw" : |
+  definition: In Lisp, 'throw' exits from the innermost 'catch' that matches the given tag.
+  Example:
+    (catch 'exit (throw 'exit 'out)) ; catches 'out' with the tag 'exit'
+"labels" : |
+  definition: In Lisp, 'labels' defines one or more local functions.
+  Example:
+    (labels ((inc (x) (+ x 1))) (inc 5)) ; defines and uses a local function 'inc' to increment 5
+"flet" : |
+  definition: In Lisp, 'flet' defines local functions with temporary scope.
+  Example:
+    (flet ((square (x) (* x x))) (square 3)) ; defines a temporary function 'square' and uses it to square 3
+"apply" : |
+  definition: In Lisp, 'apply' is used to call a function with a list of arguments provided as a list.
+  Example:
+    (apply '+ '(1 2 3)) ; applies '+' to the list (1 2 3), returning 6
+"funcall" : |
+  definition: In Lisp, 'funcall' is used to call a function with a given set of arguments.
+  Example:
+    (funcall '+ 1 2 3) ; calls '+' with arguments 1, 2, 3, returning 6
+"load" : |
+  definition: In Lisp and Emacs, 'load' is used to load and evaluate a file of Lisp code.
+  Example:
+    (load "my-file.el") ; loads and executes Lisp code from 'my-file.el'
+"interactive" : |
+  definition: In Emacs Lisp, 'interactive' is used to declare a function as callable interactively (i.e., from Emacs commands).
+  Example:
+    (defun my-function () (interactive) (message "Hello, world!"))
+"defvar" : |
+  definition: In Emacs Lisp, 'defvar' is used to declare global variables and optionally initialize them.
+  Example:
+    (defvar my-var nil "A variable to store my data.")
+"defcustom" : |
+  definition: In Emacs Lisp, 'defcustom' is used to declare user-customizable variables.
+  Example:
+    (defcustom my-option t "A customizable option." :type 'boolean)
+"defadvice" : |
+  definition: In Emacs Lisp, 'defadvice' is used to modify the behavior of existing functions via advice.
+  Example:
+    (defadvice save-buffers-kill-terminal (before my-before-advice activate) (message "Exiting Emacs!"))

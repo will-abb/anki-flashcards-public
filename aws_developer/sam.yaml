@@ -1,0 +1,80 @@
+"AWS SAM": |
+  A framework for developing and deploying serverless applications. All configuration is in YAML, generating complex CloudFormation from simple SAM YAML files.
+  Supports: 
+    - Outputs
+    - Mappings
+    - Parameters
+    - Resources
+  Can use CodeDeploy to deploy Lambda functions and help run Lambda, API Gateway, DynamoDB locally.
+"SAM Template Header": |
+  Indicates it's an SAM template.
+  Syntax: Transform: 'AWS::Serverless-2016-10-31'
+"Resources": |
+  AWS::Serverless::Function: Defines a Lambda function.
+  AWS::Serverless::Api: Defines an API Gateway.
+  AWS::Serverless::SimpleTable: Defines a DynamoDB table.
+"Package and Deploy": |
+  Commands:
+    - sam package
+    - sam deploy
+  Packages and deploys the application. Quickly sync local changes to AWS Lambda using SAM Accelerate.
+  Sync Command: sam sync --watch
+"Deployment Process": |
+  Steps:
+    - Build the application locally (sam build)
+    - Package and deploy the application (sam deploy)
+  Outputs:
+    - CloudFormation Stack
+    - Lambda
+    - API Gateway
+    - DynamoDB
+"SAM Accelerate": |
+  Set of features to reduce latency while deploying resources to AWS.
+  Commands:
+    - sam sync: Synchronizes project declared in SAM templates to AWS.
+    - sam sync --code: Synchronizes code changes without updating infrastructure.
+    - sam sync --code --resource AWS::Serverless::Function: Synchronizes only all Lambda functions and their dependencies.
+    - sam sync --code --resource-id HelloWorldLambdaFunction: Synchronizes only a specific resource by its ID.
+    - sam sync --watch: Monitors for file changes and automatically synchronizes when changes are detected.
+"CLI Debugging": |
+  Locally build, test, and debug serverless applications defined using AWS SAM templates.
+  Supported IDEs:
+    - AWS Cloud9
+    - Visual Studio Code
+    - JetBrains
+    - PyCharm
+    - IntelliJ
+  Features:
+    - Provides a lambda-like execution environment locally.
+    - AWS Toolkits: IDE plugins to build, test, debug, deploy, and invoke Lambda functions built using AWS SAM.
+"Policy Templates": |
+  Templates to apply permissions to Lambda Functions.
+  Examples:
+    - S3ReadPolicy: Gives read only permissions to objects in S3.
+    - SQSPollerPolicy: Allows polling an SQS queue.
+    - DynamoDBCrudPolicy: CRUD permissions for DynamoDB.
+"CodeDeploy Integration": |
+  Features:
+    - Traffic Shifting: Pre and Post traffic hooks to validate deployment.
+    - Automated rollback using CloudWatch Alarms.
+  AutoPublishAlias:
+    - Detects when new code is being deployed.
+    - Creates and publishes an updated version of the function.
+    - DeploymentPreference: Canary, Linear, AllAtOnce.
+    - Hooks: Pre and post traffic shifting Lambda functions.
+"Local Capabilities": |
+  Local Start:
+    - sam local start-lambda: Starts a local endpoint that emulates AWS Lambda.
+    - sam local start-api: Starts a local HTTP server that hosts all functions.
+  Local Invoke:
+    - sam local invoke: Invokes Lambda function with payload once and quits after invocation completes.
+  Generate Events:
+    - sam local generate-event: Generates sample payloads for event sources like S3, API Gateway, SNS, Kinesis, DynamoDB.
+  Commands:
+    - sam local start-lambda
+    - sam local invoke
+    - sam local start-api
+    - sam local generate-event
+"Multiple Environments": |
+  Configuration: samconfig.toml
+  Command: sam deploy --config-env dev

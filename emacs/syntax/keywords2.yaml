@@ -1,0 +1,284 @@
+"defstruct" : |
+  definition: In Lisp, 'defstruct' is used to define a new data structure.
+  Example:
+    (defstruct person name age) ; defines a new structure 'person' with fields 'name' and 'age'
+"etypecase" : |
+  definition: In Lisp, 'etypecase' is an error-signaling form of 'typecase', which checks the type of an expression and executes corresponding code.
+  Example:
+    (etypecase x (integer (print "Integer")) (string (print "String")) (error "Unexpected type"))
+"ecase" : |
+  definition: In Lisp, 'ecase' is similar to 'etypecase', but it checks for expected values rather than types and signals an error if the value is not one of the expected ones.
+  Example:
+    (ecase x ('a (print "a")) ('b (print "b")) (error "Value not 'a' or 'b'"))
+"deftype" : |
+  definition: In Lisp, 'deftype' defines a new type specifier that can be used in type declarations and type checking.
+  Example:
+    (deftype small-number () '(integer 0 10)) ; defines 'small-number' as an integer between 0 and 10
+"typecase" : |
+  definition: In Lisp, 'typecase' is used for branching based on the type of a given expression.
+  Example:
+    (typecase x (integer (print "x is an integer")) (string (print "x is a string")) (t (print "x is another type")))
+"with-open-file" : |
+  definition: In Lisp, 'with-open-file' is a macro that manages the opening and closing of a file around a block of code.
+  Example:
+    (with-open-file (stream "myfile.txt" :direction :output) (write-string "Hello, file!" stream))
+"tagbody" : |
+  definition: In Lisp, 'tagbody' allows for non-local exits using tags as goto labels.
+  Example:
+    (tagbody (print "Start") goto-tag (print "Skipped this") (go goto-tag) (print "End"))
+"go" : |
+  definition: In Lisp, 'go' is used to jump to a tag defined in a 'tagbody'.
+  Example:
+    (tagbody (print "First") (go skip) (print "Not printed") skip (print "Second"))
+"unwind-protect" : |
+  definition: In Lisp, 'unwind-protect' ensures that cleanup forms are executed regardless of how control leaves the protected forms.
+  Example:
+    (unwind-protect (progn (print "Trying") (error "Error occurred")) (print "Cleanup"))
+"defclass" : |
+  definition: In Common Lisp, 'defclass' is used to define new classes for object-oriented programming.
+  Example:
+    (defclass car () ((make :initarg :make :accessor car-make) (model :initarg :model :accessor car-model)))
+"make-instance" : |
+  definition: In Common Lisp, 'make-instance' is used to create instances of a class.
+  Example:
+    (make-instance 'car :make "Toyota" :model "Corolla")
+"slot-value" : |
+  definition: In Common Lisp, 'slot-value' is used to access the value stored in an object's slot.
+  Example:
+    (slot-value (make-instance 'car :make "Toyota" :model "Corolla") 'make) ; returns "Toyota"
+"defmethod" : |
+  definition: In Common Lisp, 'defmethod' defines methods for specified classes and conditions.
+  Example:
+    (defmethod drive ((c car)) (print "The car is driving."))
+"defparameter" : |
+  definition: In Lisp, 'defparameter' is used to declare and initialize global variables that can be re-bound.
+  Example:
+    (defparameter *my-var* 100 "A global variable.")
+"let*" : |
+  definition: In Lisp, 'let*' is similar to 'let', but allows for sequential variable binding where later variables can depend on earlier ones.
+  Example:
+    (let* ((x 5) (y (+ x 1))) (print y)) ; y will be 6
+"provide" : |
+  definition: In Emacs Lisp, 'provide' is used to signal that a feature (module) has been loaded.
+  Example:
+    (provide 'my-module)
+"require" : |
+  definition: In Emacs Lisp, 'require' is used to load a module unless it is already loaded.
+  Example:
+    (require 'cl-lib)
+"with-temp-buffer" : |
+  definition: In Emacs Lisp, 'with-temp-buffer' creates a temporary buffer and executes a body of code within its context.
+  Example:
+    (with-temp-buffer (insert "Hello") (message "%s" (buffer-string)))
+"with-current-buffer" : |
+  definition: In Emacs Lisp, 'with-current-buffer' switches the context to a specified buffer for the execution of a block of code.
+  Example:
+    (with-current-buffer "existing-buffer" (insert "Adding text."))
+"save-excursion" : |
+  definition: In Emacs Lisp, 'save-excursion' saves the point and mark, and restores them after executing the body of the function.
+  Example:
+    (save-excursion (goto-char (point-min)) (insert "Start of buffer."))
+"save-restriction" : |
+  definition: In Emacs Lisp, 'save-restriction' saves any narrowing of the buffer, allowing code to temporarily widen it if needed, and restores it afterwards.
+  Example:
+    (save-restriction (widen) (delete-region (point-min) (point-max)))
+"eval-after-load" : |
+  definition: In Emacs Lisp, 'eval-after-load' allows code to be executed after a particular feature or file is loaded.
+  Example:
+    (eval-after-load "python-mode" '(setq python-indent-offset 4))
+"when" : |
+  definition: In Lisp, 'when' is a conditional that executes a body of code only when a specified condition is true.
+  Example:
+    (when (> x 5) (setq x 0))
+"unless" : |
+  definition: In Lisp, 'unless' is similar to 'when', but the body of code is executed only when the condition is false.
+  Example:
+    (unless (file-exists-p "myfile.txt") (error "File does not exist"))
+"defmacro" : |
+  definition: In Lisp, 'defmacro' is used to define macros, which allow for code transformations and more sophisticated control structures.
+  Example:
+    (defmacro unless (cond &body body) `(if (not ,cond) (progn ,@body)))
+"gensym" : |
+  definition: In Lisp, 'gensym' generates a unique symbol, typically used to avoid name conflicts in macros.
+  Example:
+    (gensym "prefix") ; generates a symbol like prefix123
+"defpackage" : |
+  definition: In Common Lisp, 'defpackage' is used to define a package, which is a collection of Lisp symbols (a namespace).
+  Example:
+    (defpackage :my-package (:use :cl))
+"in-package" : |
+  definition: In Common Lisp, 'in-package' switches the current package context to the specified package.
+  Example:
+    (in-package :my-package)
+"intern" : |
+  definition: In Lisp, 'intern' creates or finds a symbol in a given package.
+  Example:
+    (intern "MY-SYMBOL" :my-package)
+"export" : |
+  definition: In Lisp, 'export' is used to make symbols accessible to other packages.
+  Example:
+    (export 'my-symbol :my-package)
+"symbol-value" : |
+  definition: In Lisp, 'symbol-value' is used to get the value of a symbol.
+  Example:
+    (symbol-value 'my-var)
+"symbol-function" : |
+  definition: In Lisp, 'symbol-function' is used to retrieve the function definition of a symbol.
+  Example:
+    (symbol-function 'my-function)
+"trace" : |
+  definition: In Lisp, 'trace' is used to trace function calls and returns for debugging purposes.
+  Example:
+    (trace my-function)
+"step" : |
+  definition: In Common Lisp, 'step' is used to single-step through code interactively during debugging.
+  Example:
+    (step (my-function 10))
+"assert" : |
+  definition: In Lisp, 'assert' is used to check for condition and optionally signal an error if the condition is not met.
+  Example:
+    (assert (>= x 0) (x) "x must be non-negative")
+"error" : |
+  definition: In Lisp, 'error' is used to signal an error, optionally providing a message and data about the error.
+  Example:
+    (error "An unexpected error occurred")
+"handler-case" : |
+  definition: In Common Lisp, 'handler-case' is used to handle different types of errors within a block of code.
+  Example:
+    (handler-case (some-dangerous-operation) (error (e) (format t "Caught an error: ~A" e)))
+"restart-case" : |
+  definition: In Common Lisp, 'restart-case' provides a mechanism for recovering from errors by defining restarts.
+  Example:
+    (restart-case (error "Problem occurred") (continue () :report "Ignore the problem" "Ignore"))
+"defgeneric" : |
+  definition: In Common Lisp, 'defgeneric' defines a generic function, which can have multiple methods with different types of arguments.
+  Example:
+    (defgeneric area (shape) (:documentation "Calculate the area of a shape."))
+"definterface" : |
+  definition: In Lisp, while not standard, 'definterface' is often used in environments that support object-oriented programming to define an interface for classes.
+  Example:
+    (definterface IShape (get-area))
+"defconstant" : |
+  definition: In Lisp, 'defconstant' is used to define symbols that behave like constants.
+  Example:
+    (defconstant +pi+ 3.14159 "The mathematical constant pi.")
+"adjustable-array" : |
+  definition: In Common Lisp, 'adjustable-array' is a type of array that can be resized after its creation.
+  Example:
+    (make-array 10 :adjustable t)
+"compile" : |
+  definition: In Lisp, 'compile' is used to compile a Lisp function for faster execution.
+  Example:
+    (compile nil '(lambda (x) (* x x)))
+"compile-file" : |
+  definition: In Common Lisp, 'compile-file' compiles a file of Lisp code into a compiled file.
+  Example:
+    (compile-file "mycode.lisp")
+"load-time-value" : |
+  definition: In Common Lisp, 'load-time-value' computes a value at the time a file is loaded, not when its containing expression is executed.
+  Example:
+    (defvar my-timestamp (load-time-value (get-universal-time)))
+"macroexpand" : |
+  definition: In Lisp, 'macroexpand' is used to expand a macro form into its full form before it is evaluated.
+  Example:
+    (macroexpand '(unless (positive-p x) (error "Not positive")))
+"macroexpand-1" : |
+  definition: In Lisp, 'macroexpand-1' performs a single-step macro expansion of a form.
+  Example:
+    (macroexpand-1 '(when t (print "Hello")))
+"read" : |
+  definition: In Lisp, 'read' reads the next Lisp expression from the current input stream.
+  Example:
+    (read)
+"read-line" : |
+  definition: In Lisp, 'read-line' reads a line of text from a stream.
+  Example:
+    (read-line)
+"write" : |
+  definition: In Lisp, 'write' outputs a representation of an object to a stream.
+  Example:
+    (write 'hello :stream *standard-output*)
+"print" : |
+  definition: In Lisp, 'print' outputs a representation of an object to a stream, followed by a newline.
+  Example:
+    (print "Hello, world!")
+"prin1" : |
+  definition: In Lisp, 'prin1' prints an object to the specified output stream, without a newline.
+  Example:
+    (prin1 "Hello, world!" *standard-output*)
+"format" : |
+  definition: In Lisp, 'format' is used for producing formatted text, combining fixed text with variable data.
+  Example:
+    (format t "The value of pi is approximately ~A." 3.14159)
+"defsetf" : |
+  definition: In Common Lisp, 'defsetf' is used to define new setf expanders.
+  Example:
+    (defsetf my-getter my-setter)
+"sleep" : |
+  definition: In Lisp, 'sleep' causes the Lisp process to pause for a specified number of seconds.
+  Example:
+    (sleep 1)
+"defparameter" : |
+  definition: In Lisp, 'defparameter' declares and initializes a global variable, allowing its value to be dynamically re-bound.
+  Example:
+    (defparameter *max-size* 100 "Maximum size of the data structure.")
+"destructuring-bind" : |
+  definition: In Lisp, 'destructuring-bind' allows binding of a set of variables to a corresponding set of values extracted from a list.
+  Example:
+    (destructuring-bind (a (b c)) '(1 (2 3)) (format t "a: ~A, b: ~A, c: ~A" a b c))
+"with-slots" : |
+  definition: In Common Lisp, 'with-slots' provides a convenient syntax for accessing multiple slots of an object within a given body.
+  Example:
+    (with-slots (name age) person (format t "~A is ~A years old." name age))
+"with-accessors" : |
+  definition: In Common Lisp, 'with-accessors' is similar to 'with-slots', but it uses accessor functions to interact with the object's slots.
+  Example:
+    (with-accessors (name age) person (format t "~A is ~A years old." name age))
+"defun*" : |
+  definition: In Common Lisp, 'defun*' is an extension of 'defun' that supports optional, keyword, rest, and auxiliary parameters.
+  Example:
+    (defun* my-func (a &optional b &key c &rest d &aux e (f 0)) (list a b c d e f))
+"ensure-generic-function" : |
+  definition: In Common Lisp, 'ensure-generic-function' is used to define or modify a generic function without providing method definitions.
+  Example:
+    (ensure-generic-function 'my-generic)
+"find-class" : |
+  definition: In Common Lisp, 'find-class' is used to find a class object by its name.
+  Example:
+    (find-class 'my-class)
+"mapcar" : |
+  definition: In Lisp, 'mapcar' applies a function to each element of a list or lists, returning a list of results.
+  Example:
+    (mapcar #'abs '(-1 -2 -3 2 3)) ; returns (1 2 3 2 3)
+"reduce" : |
+  definition: In Lisp, 'reduce' is used to reduce a sequence to a single value, applying a function of two arguments cumulatively to the items of the sequence.
+  Example:
+    (reduce #'+ '(1 2 3 4)) ; returns 10
+"loop for" : |
+  definition: In Common Lisp, 'loop for' provides a powerful and flexible way to iterate over sequences, numbers, and more.
+  Example:
+    (loop for i from 1 to 10 collect i)
+"multiple-value-call" : |
+  definition: In Common Lisp, 'multiple-value-call' applies a function to sets of values returned by other functions.
+  Example:
+    (multiple-value-call #'list (values 1 2) (values 3 4)) ; returns (1 2 3 4)
+"push" : |
+  definition: In Lisp, 'push' is used to add an element to the front of a list stored in a variable.
+  Example:
+    (push 'a my-list) ; adds 'a' to the front of 'my-list'
+"pop" : |
+  definition: In Lisp, 'pop' is used to remove and return the first element from a list stored in a variable.
+  Example:
+    (pop my-list) ; removes and returns the first element of 'my-list'
+"incf" : |
+  definition: In Lisp, 'incf' is used to increment a number stored in a variable.
+  Example:
+    (incf x) ; increments the value of x
+"decf" : |
+  definition: In Lisp, 'decf' is used to decrement a number stored in a variable.
+  Example:
+    (decf x) ; decrements the value of x
+"psetf" : |
+  definition: In Lisp, 'psetf' is used for parallel assignment of values to places.
+  Example:
+    (psetf (car pair) 42 (cdr pair) 'foo) ; sets car of pair to 42 and cdr to 'foo'
